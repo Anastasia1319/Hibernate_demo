@@ -40,7 +40,10 @@ public class UserRepositoryImpl implements UserRepository {
 
     @Override
     public User update(User entity) {
-        return null;
+        entityManager.getTransaction().begin();
+        entityManager.merge(entity);
+        entityManager.getTransaction().commit();
+        return entity;
     }
 
     @Override
