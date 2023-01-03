@@ -3,12 +3,20 @@ package com.belhard.hibernate.dao.impl;
 import com.belhard.hibernate.dao.UserDao;
 import com.belhard.hibernate.entity.User;
 
+import javax.persistence.EntityManager;
 import java.util.List;
 
 public class UserDaoImpl implements UserDao {
+    private final EntityManager entityManager;
+
+    public UserDaoImpl(EntityManager entityManager) {
+        this.entityManager = entityManager;
+    }
+
     @Override
     public User find(Long key) {
-        return null;
+        User user = entityManager.find(User.class, key);
+        return user;
     }
 
     @Override
