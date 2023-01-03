@@ -31,20 +31,31 @@ public class UserRepositoryImpl implements UserRepository {
     }
 
     @Override
-    public User create(User entity) {
+    public void save(User entity) {
         entityManager.getTransaction().begin();
-        entityManager.persist(entity);
+        if (entity.getId() != null) {
+            entityManager.merge(entity);
+        } else {
+            entityManager.persist(entity);
+        }
         entityManager.getTransaction().commit();
-        return entity;
     }
 
-    @Override
-    public User update(User entity) {
-        entityManager.getTransaction().begin();
-        entityManager.merge(entity);
-        entityManager.getTransaction().commit();
-        return entity;
-    }
+//    @Override
+//    public User create(User entity) {
+//        entityManager.getTransaction().begin();
+//        entityManager.persist(entity);
+//        entityManager.getTransaction().commit();
+//        return entity;
+//    }
+//
+//    @Override
+//    public User update(User entity) {
+//        entityManager.getTransaction().begin();
+//        entityManager.merge(entity);
+//        entityManager.getTransaction().commit();
+//        return entity;
+//    }
 
     @Override
     public boolean delete(Long key) {
