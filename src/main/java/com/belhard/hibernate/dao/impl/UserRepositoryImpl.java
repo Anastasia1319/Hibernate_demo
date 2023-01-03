@@ -1,12 +1,12 @@
 package com.belhard.hibernate.dao.impl;
 
-import com.belhard.hibernate.dao.UserDao;
+import com.belhard.hibernate.dao.UserRepository;
 import com.belhard.hibernate.entity.User;
 
 import javax.persistence.EntityManager;
 import java.util.List;
 
-public class UserRepositoryImpl implements UserDao {
+public class UserRepositoryImpl implements UserRepository {
     private final EntityManager entityManager;
     public static final String FIND_ALL ="from User";
 
