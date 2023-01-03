@@ -6,11 +6,11 @@ import com.belhard.hibernate.entity.User;
 import javax.persistence.EntityManager;
 import java.util.List;
 
-public class UserDaoImpl implements UserDao {
+public class UserRepositoryImpl implements UserDao {
     private final EntityManager entityManager;
     public static final String FIND_ALL ="from User";
 
-    public UserDaoImpl(EntityManager entityManager) {
+    public UserRepositoryImpl(EntityManager entityManager) {
         this.entityManager = entityManager;
     }
 
@@ -32,7 +32,10 @@ public class UserDaoImpl implements UserDao {
 
     @Override
     public User create(User entity) {
-        return null;
+        entityManager.getTransaction().begin();
+        entityManager.persist(entity);
+        entityManager.getTransaction().commit();
+        return entity;
     }
 
     @Override
