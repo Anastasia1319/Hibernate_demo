@@ -4,7 +4,7 @@
         <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
         <properties>
             <property name="jakarta.persistence.jdbc.driver" value="org.postgresql.Driver"/>
-            <property name="jakarta.persistence.jdbc.url" value="jdbc:postgres://surus.db.elephantsql.com:5432/lcnrkway"/>
+            <property name="jakarta.persistence.jdbc.url" value="jdbc:postgresql://surus.db.elephantsql.com/lcnrkway"/>
             <property name="jakarta.persistence.jdbc.user" value="lcnrkway"/>
             <property name="jakarta.persistence.jdbc.password" value="pA2_vSxWdp79Ltk0TD0BdKrdnU7JCoyP"/>
             <property name="hibernate.show_sql" value="true"/>

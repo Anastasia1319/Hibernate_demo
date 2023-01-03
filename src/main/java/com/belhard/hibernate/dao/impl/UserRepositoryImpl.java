@@ -58,16 +58,27 @@ public class UserRepositoryImpl implements UserRepository {
 //        return entity;
 //    }
 
+//    @Override
+//    public boolean delete(Long key) {
+//        boolean deletedResult = false;
+//        entityManager.getTransaction().begin();
+//        User user = entityManager.find(User.class, key);
+//        if (user != null) {
+//            entityManager.remove(user);
+//            deletedResult = true;
+//        }
+//        entityManager.getTransaction().commit();
+//        return deletedResult;
+//    }
+
     @Override
     public boolean delete(Long key) {
         boolean deletedResult = false;
         entityManager.getTransaction().begin();
-        User user = entityManager.find(User.class, key);
-        if (user != null) {
-            entityManager.remove(user);
-            deletedResult = true;
-        }
+        Query query = entityManager.createQuery("delete from User where id = :id");
+        query.setParameter("id", key);
+        int result = query.executeUpdate();
         entityManager.getTransaction().commit();
-        return deletedResult;
+        return result == 1;
     }
 }
