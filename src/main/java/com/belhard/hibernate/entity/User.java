@@ -1,4 +1,4 @@
-package com.belhard.dao.entity;
+package com.belhard.hibernate.entity;
 
 import javax.persistence.*;
 
