@@ -4,6 +4,7 @@ import com.belhard.hibernate.dao.UserRepository;
 import com.belhard.hibernate.entity.User;
 
 import javax.persistence.EntityManager;
+import javax.persistence.Query;
 import java.util.List;
 
 public class UserRepositoryImpl implements UserRepository {
@@ -66,6 +67,7 @@ public class UserRepositoryImpl implements UserRepository {
             entityManager.remove(user);
             deletedResult = true;
         }
+        entityManager.getTransaction().commit();
         return deletedResult;
     }
 }
