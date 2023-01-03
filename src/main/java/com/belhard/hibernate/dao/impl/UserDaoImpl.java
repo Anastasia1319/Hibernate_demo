@@ -8,6 +8,7 @@ import java.util.List;
 
 public class UserDaoImpl implements UserDao {
     private final EntityManager entityManager;
+    public static final String FIND_ALL ="from User";
 
     public UserDaoImpl(EntityManager entityManager) {
         this.entityManager = entityManager;
@@ -21,7 +22,10 @@ public class UserDaoImpl implements UserDao {
 
     @Override
     public List<User> findAll() {
-        return null;
+        entityManager.getTransaction().begin();
+        List<User> users = entityManager.createQuery(FIND_ALL, User.class).getResultList();
+        entityManager.getTransaction().commit();
+        return users;
     }
 
     @Override
