@@ -48,6 +48,13 @@ public class UserRepositoryImpl implements UserRepository {
 
     @Override
     public boolean delete(Long key) {
-        return false;
+        boolean deletedResult = false;
+        entityManager.getTransaction().begin();
+        User user = entityManager.find(User.class, key);
+        if (user != null) {
+            entityManager.remove(user);
+            deletedResult = true;
+        }
+        return deletedResult;
     }
 }
