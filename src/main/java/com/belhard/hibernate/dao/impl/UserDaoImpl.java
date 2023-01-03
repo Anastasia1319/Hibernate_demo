@@ -16,7 +16,9 @@ public class UserDaoImpl implements UserDao {
 
     @Override
     public User find(Long key) {
+        entityManager.getTransaction().begin();
         User user = entityManager.find(User.class, key);
+        entityManager.getTransaction().commit();
         return user;
     }
 
